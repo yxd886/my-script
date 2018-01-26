@@ -239,8 +239,7 @@ def test():
   kill_b6(ssh_b6)                                                                                                                      
   kill_b7(ssh_b7)                                                                                                                      
   kill_b8(ssh_b8)
-  kill_g1(ssh_g1)                                                                                                                      
-  kill_g2(ssh_g2)
+
   clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8)
   ssh_r5.close()
   ssh_b1.close()
