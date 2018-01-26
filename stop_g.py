@@ -158,23 +158,7 @@ def kill_g2(ssh):
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 
 
-def read_pkts(ssh,rt_num):
-  cmd="sudo ~/nfa/deps/bess/bessctl/bessctl show port rt"+str(rt_num)+"_iport"
-  stdin,stdout,stderr = ssh.exec_command(cmd);
 
-  received_pkts_line = ''
-  dropped_pkts_line = ''
-
-  i = 0
-  for line in stdout:
-    if i == 6:
-    received_pkts_line = line
-    if i == 7:
-        dropped_pkts_line = line
-    i=i+1
-
-
-  return long(received_pkts_line.split(":")[1].replace(',', '')), long(dropped_pkts_line.split(":")[1].replace(',', ''))
 def clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8):
   ssh_b1.exec_command('rm ~/cpu.txt ~/config.txt')
   ssh_b2.exec_command('rm ~/cpu.txt ~/config.txt')
