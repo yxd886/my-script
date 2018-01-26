@@ -183,8 +183,7 @@ def clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8):
   ssh_b6.exec_command('rm ~/cpu.txt ~/config.txt')
   ssh_b7.exec_command('rm ~/cpu.txt ~/config.txt')
   ssh_b8.exec_command('rm ~/cpu.txt ~/config.txt')
-  ssh_g1.exec_command('rm ~/cpu.txt ~/config.txt')
-  ssh_g2.exec_command('rm ~/cpu.txt ~/config.txt')
+
   
   
 

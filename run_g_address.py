@@ -59,7 +59,6 @@ def test():
 
 
 
-  clean(ssh_g1,ssh_g2)
                                                                                                                     
   start_g1(ssh_g1)                                                                                                                     
   start_g2(ssh_g2)
