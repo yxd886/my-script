@@ -228,16 +228,7 @@ def test():
   ssh_b8.connect('202.45.128.153',username='net',password='netexplo')
   ssh_b8.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
   
-  ssh_g1 = paramiko.SSHClient()
-  ssh_g1.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-  ssh_g1.connect('202.45.128.221',username='net',password='netexplo')
-  ssh_g1.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
-  
-  
-  ssh_g2 = paramiko.SSHClient()                                                                                                        
-  ssh_g2.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_g2.connect('202.45.128.222',username='net',password='netexplo') 
-  ssh_g2.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
   
   kill_r4()
   kill_r5(ssh_r5)
@@ -250,7 +241,7 @@ def test():
   kill_b8(ssh_b8)
   kill_g1(ssh_g1)                                                                                                                      
   kill_g2(ssh_g2)
-  clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8,ssh_g1,ssh_g2)
+  clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8)
   ssh_r5.close()
   ssh_b1.close()
   ssh_b2.close()
@@ -259,8 +250,7 @@ def test():
   ssh_b6.close()                                                                                                                       
   ssh_b7.close()                                                                                                                       
   ssh_b8.close() 
-  ssh_g1.close()                                                                                                                       
-  ssh_g2.close() 
+
 def main():
 
 
