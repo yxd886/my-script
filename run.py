@@ -30,56 +30,6 @@ def parse_arguments():
 
   return options,args
 
-def local_start_up_ok(num_of_rts):
-  success_flag = False;
-
-  for x in range(1,num_of_rts+1):
-
-    cmd="cat ./rt"+str(x)+"_log.log"
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
-    success_flag = False
-
-    for line in iter(process.stdout.readline, ''):
-      if len(line.split(']'))>1 and line.split(']')[1] == ' Prepare server\n':
-        success_flag = True
-        break;
-
-    if success_flag == False:
-      break;
-
-  if success_flag == False:
-    print "[ERROR] Fail to start the runtime correctly, need to retry."
-  else:
-    print "Successfully start all the runtimes."
-
-  return success_flag
-
-def remote_start_up_ok(ssh, num_of_rts):
-  success_flag = False;
-
-  for x in range(1, num_of_rts+1):
-
-    cmd="cat /home/net/nfa/eval/m_test/rt"+str(x)+"_log.log"
-    print cmd
-    stdin,stdout,stderr =  ssh.exec_command(cmd)
-    success_flag = False
-
-    for line in stdout:
-      print line
-      if line.find("Prepare server")!=-1:
-        success_flag = True
-        break;
-
-    if success_flag == False:
-      break;
-
-  if success_flag == False:
-    print "[ERROR] Fail to start the runtime correctly, need to retry."
-  else:
-    print "Successfully start all the runtimes."
-
-  return success_flag
-
 
 def start_r4():
   cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &"
@@ -229,25 +179,7 @@ def test():
   start_b6(ssh_b6)                                                                                                                     
   start_b7(ssh_b7)                                                                                                                     
   start_b8(ssh_b8)
-  time.sleep(43200)
-  kill_r4()
-  kill_r5(ssh_r5)
-  kill_b1(ssh_b1)
-  kill_b2(ssh_b2)
-  kill_b3(ssh_b3)
-  kill_b4(ssh_b4)
-  kill_b6(ssh_b6)                                                                                                                      
-  kill_b7(ssh_b7)                                                                                                                      
-  kill_b8(ssh_b8)
-  clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8)
-  ssh_r5.close()
-  ssh_b1.close()
-  ssh_b2.close()
-  ssh_b3.close()
-  ssh_b4.close()
-  ssh_b6.close()                                                                                                                       
-  ssh_b7.close()                                                                                                                       
-  ssh_b8.close() 
+
 def main():
 
 

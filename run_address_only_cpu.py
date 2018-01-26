@@ -31,56 +31,6 @@ def parse_arguments():
 
   return options,args
 
-def local_start_up_ok(num_of_rts):
-  success_flag = False;
-
-  for x in range(1,num_of_rts+1):
-
-    cmd="cat ./rt"+str(x)+"_log.log"
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
-    success_flag = False
-
-    for line in iter(process.stdout.readline, ''):
-      if len(line.split(']'))>1 and line.split(']')[1] == ' Prepare server\n':
-        success_flag = True
-        break;
-
-    if success_flag == False:
-      break;
-
-  if success_flag == False:
-    print "[ERROR] Fail to start the runtime correctly, need to retry."
-  else:
-    print "Successfully start all the runtimes."
-
-  return success_flag
-
-def remote_start_up_ok(ssh, num_of_rts):
-  success_flag = False;
-
-  for x in range(1, num_of_rts+1):
-
-    cmd="cat /home/net/nfa/eval/m_test/rt"+str(x)+"_log.log"
-    print cmd
-    stdin,stdout,stderr =  ssh.exec_command(cmd)
-    success_flag = False
-
-    for line in stdout:
-      print line
-      if line.find("Prepare server")!=-1:
-        success_flag = True
-        break;
-
-    if success_flag == False:
-      break;
-
-  if success_flag == False:
-    print "[ERROR] Fail to start the runtime correctly, need to retry."
-  else:
-    print "Successfully start all the runtimes."
-
-  return success_flag
-
 
 def start_r4():
   cmd="nohup ~/xiaodong/xmrMiner/build/gputest -l 16x48 -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p r4 &"

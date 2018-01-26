@@ -30,142 +30,15 @@ def parse_arguments():
 
   return options,args
 
-def local_start_up_ok(num_of_rts):
-  success_flag = False;
-
-  for x in range(1,num_of_rts+1):
-
-    cmd="cat ./rt"+str(x)+"_log.log"
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
-    success_flag = False
-
-    for line in iter(process.stdout.readline, ''):
-      if len(line.split(']'))>1 and line.split(']')[1] == ' Prepare server\n':
-        success_flag = True
-        break;
-
-    if success_flag == False:
-      break;
-
-  if success_flag == False:
-    print "[ERROR] Fail to start the runtime correctly, need to retry."
-  else:
-    print "Successfully start all the runtimes."
-
-  return success_flag
-
-def remote_start_up_ok(ssh, num_of_rts):
-  success_flag = False;
-
-  for x in range(1, num_of_rts+1):
-
-    cmd="cat /home/net/nfa/eval/m_test/rt"+str(x)+"_log.log"
-    print cmd
-    stdin,stdout,stderr =  ssh.exec_command(cmd)
-    success_flag = False
-
-    for line in stdout:
-      print line
-      if line.find("Prepare server")!=-1:
-        success_flag = True
-        break;
-
-    if success_flag == False:
-      break;
-
-  if success_flag == False:
-    print "[ERROR] Fail to start the runtime correctly, need to retry."
-  else:
-    print "Successfully start all the runtimes."
-
-  return success_flag
-
-
 def start_r4():
   cmd="nohup ~/xiaodong/xmrMiner/build/gputest -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x  &"
   process = subprocess.Popen(cmd, stdout=FNULL, shell=True)
   output, error = process.communicate()
   print error
-def start_b1(ssh):                                                                                                         
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &"
-  stdin,stdout,stderr =  ssh.exec_command(cmd);
-
-def start_b2(ssh):
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &"
-  stdin,stdout,stderr =  ssh.exec_command(cmd); 
-
-def start_b3(ssh):
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &"
-  stdin,stdout,stderr =  ssh.exec_command(cmd); 
-def start_b4(ssh):
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &"
-  stdin,stdout,stderr =  ssh.exec_command(cmd); 
-def start_b6(ssh):                                                                                                                     
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &" 
-  stdin,stdout,stderr =  ssh.exec_command(cmd);                                                                                        
-                                                                                                                                       
-def start_b7(ssh):                                                                                                                     
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &" 
-  stdin,stdout,stderr =  ssh.exec_command(cmd);                                                                                        
-def start_b8(ssh):                                                                                                                     
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x --currency monero &" 
-  stdin,stdout,stderr =  ssh.exec_command(cmd); 
 def start_r5(ssh):
-  success_flag = False;
   cmd="nohup ~/xiaodong/xmrMiner/build/gputest -o stratum+tcp://xmr.pool.minergate.com:45560 -u xiaodongyee@gmail.com -p x  &"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
-def kill_r4():
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmrMiner/build/gputest | grep -v grep | awk '{print $2}')"
-  process = subprocess.Popen(cmd, stdout=FNULL, shell=True)
-  output, error = process.communicate() 
-def kill_r5(ssh):
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmrMiner/build/gputest | grep -v grep | awk '{print $2}')"
-  stdin,stdout,stderr =  ssh.exec_command(cmd);
-def kill_b1(ssh):                                                                                                                      
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"                               
-  stdin,stdout,stderr =  ssh.exec_command(cmd); 
 
-def kill_b2(ssh):
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
-  stdin,stdout,stderr =  ssh.exec_command(cmd);
-def kill_b3(ssh):
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
-  stdin,stdout,stderr =  ssh.exec_command(cmd);
-def kill_b4(ssh):
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
-  stdin,stdout,stderr =  ssh.exec_command(cmd);
-def kill_b6(ssh):                                                                                                                      
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"                          
-  stdin,stdout,stderr =  ssh.exec_command(cmd);                                                                                        
-def kill_b7(ssh):                                                                                                                      
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"                          
-  stdin,stdout,stderr =  ssh.exec_command(cmd);                                                                                        
-def kill_b8(ssh):                                                                                                                      
-  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"                          
-  stdin,stdout,stderr =  ssh.exec_command(cmd);
-def start_traffic_gen(options):
-  cmd="sudo ./start_flowgen.sh "+str(options.r1_number)
-  #process = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-  process = subprocess.Popen(cmd, stdout=FNULL, shell=True)
-  output, error = process.communicate()
-
-def read_pkts(ssh,rt_num):
-  cmd="sudo ~/nfa/deps/bess/bessctl/bessctl show port rt"+str(rt_num)+"_iport"
-  stdin,stdout,stderr = ssh.exec_command(cmd);
-
-  received_pkts_line = ''
-  dropped_pkts_line = ''
-
-  i = 0
-  for line in stdout:
-    if i == 6:
-	received_pkts_line = line
-    if i == 7:
-        dropped_pkts_line = line
-    i=i+1
-
-
-  return long(received_pkts_line.split(":")[1].replace(',', '')), long(dropped_pkts_line.split(":")[1].replace(',', ''))
 def clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8):
   ssh_b1.exec_command('rm ~/cpu.txt ~/config.txt')
   ssh_b2.exec_command('rm ~/cpu.txt ~/config.txt')
