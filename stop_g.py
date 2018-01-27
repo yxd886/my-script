@@ -156,7 +156,24 @@ def kill_g1(ssh):
 def kill_g2(ssh):                                                                                                                      
   cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"                          
   stdin,stdout,stderr =  ssh.exec_command(cmd);
-
+def kill_g3(ssh):
+  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
+def kill_g4(ssh):
+  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
+def kill_g5(ssh):
+  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
+def kill_g6(ssh):
+  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
+def kill_g7(ssh):
+  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
+def kill_g8(ssh):
+  cmd="sudo kill -9 $(ps -ef | grep /xiaodong/xmr-stak/build/bin/xmr-stak | grep -v grep | awk '{print $2}')"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
 
 
 def clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8):
@@ -173,44 +190,6 @@ def clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8):
 
 def test():
   #print "Creating SSH to R2 & R3"
-  ssh_r5 = paramiko.SSHClient()
-  ssh_r5.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-  ssh_r5.connect('202.45.128.158',username='net',password='netexplo')
-  ssh_r5.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
-  ssh_b1 = paramiko.SSHClient()                                                                                                        
-  ssh_b1.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_b1.connect('202.45.128.146',username='net',password='netexplo') 
-  ssh_b1.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
-
-  ssh_b2 = paramiko.SSHClient()                                                                                                        
-  ssh_b2.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_b2.connect('202.45.128.147',username='net',password='netexplo')
-  ssh_b2.exec_command('cd ~/xiaodong/xmr-stak/build/bin') 
-
-  ssh_b3 = paramiko.SSHClient()                                                                                                        
-  ssh_b3.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_b3.connect('202.45.128.148',username='net',password='netexplo') 
-  ssh_b3.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
-
-  ssh_b4 = paramiko.SSHClient()                                                                                                        
-  ssh_b4.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_b4.connect('202.45.128.149',username='net',password='netexplo')
-  ssh_b4.exec_command('cd ~/xiaodong/xmr-stak/build/bin') 
-
-  ssh_b6 = paramiko.SSHClient()                                                                                                        
-  ssh_b6.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_b6.connect('202.45.128.151',username='net',password='netexplo')
-  ssh_b6.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
-
-  ssh_b7 = paramiko.SSHClient()                                                                                                        
-  ssh_b7.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_b7.connect('202.45.128.152',username='net',password='netexplo')
-  ssh_b7.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
-
-  ssh_b8 = paramiko.SSHClient()                                                                                                        
-  ssh_b8.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
-  ssh_b8.connect('202.45.128.153',username='net',password='netexplo')
-  ssh_b8.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
   
   ssh_g1 = paramiko.SSHClient()
   ssh_g1.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -222,21 +201,57 @@ def test():
   ssh_g2.set_missing_host_key_policy(paramiko.AutoAddPolicy())                                                                         
   ssh_g2.connect('202.45.128.222',username='net',password='netexplo') 
   ssh_g2.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
-  
+
+  ssh_g3 = paramiko.SSHClient()
+  ssh_g3.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g3.connect('202.45.128.223',username='net',password='netexplo')
+  ssh_g3.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
+
+  ssh_g4 = paramiko.SSHClient()
+  ssh_g4.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g4.connect('202.45.128.224',username='net',password='netexplo')
+  ssh_g4.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
+  ssh_g5 = paramiko.SSHClient()
+  ssh_g5.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g5.connect('202.45.128.225',username='net',password='netexplo')
+  ssh_g5.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
+
+  ssh_g6 = paramiko.SSHClient()
+  ssh_g6.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g6.connect('202.45.128.226',username='net',password='netexplo')
+  ssh_g6.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
+  ssh_g7 = paramiko.SSHClient()
+  ssh_g7.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g7.connect('202.45.128.227',username='net',password='netexplo')
+  ssh_g7.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
+
+  ssh_g8 = paramiko.SSHClient()
+  ssh_g8.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g8.connect('202.45.128.228',username='net',password='netexplo')
+  ssh_g8.exec_command('cd ~/xiaodong/xmr-stak/build/bin')  
 
   kill_g1(ssh_g1)                                                                                                                      
   kill_g2(ssh_g2)
-  clean(ssh_b1,ssh_b2,ssh_b3,ssh_b4,ssh_b6,ssh_b7,ssh_b8)
-  ssh_r5.close()
-  ssh_b1.close()
-  ssh_b2.close()
-  ssh_b3.close()
-  ssh_b4.close()
-  ssh_b6.close()                                                                                                                       
-  ssh_b7.close()                                                                                                                       
-  ssh_b8.close() 
+  kill_g3(ssh_g3)
+  kill_g4(ssh_g4)
+  kill_g5(ssh_g5)
+  kill_g6(ssh_g6)
+  kill_g7(ssh_g7)
+  kill_g8(ssh_g8)
+
   ssh_g1.close()                                                                                                                       
-  ssh_g2.close() 
+  ssh_g2.close()
+  ssh_g3.close()
+  ssh_g4.close()
+  ssh_g5.close()
+  ssh_g6.close()
+  ssh_g7.close()
+  ssh_g8.close() 
 def main():
 
 
