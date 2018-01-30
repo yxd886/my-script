@@ -38,36 +38,36 @@ def start_r4():
   output, error = process.communicate()
   print error
 def start_g1(ssh):                                                                                                         
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+" --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g1"
   print cmd
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 
 def start_g2(ssh):
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".g2:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g2"
   stdin,stdout,stderr =  ssh.exec_command(cmd); 
 
 def start_g3(ssh):
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".g3:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g3"
   stdin,stdout,stderr =  ssh.exec_command(cmd); 
 def start_g4(ssh):
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".g4:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g4"
   stdin,stdout,stderr =  ssh.exec_command(cmd); 
 def start_g5(ssh):
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".g5:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g5"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 def start_g6(ssh):                                                                                                                     
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".g6:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g6"  
   stdin,stdout,stderr =  ssh.exec_command(cmd);                                                                                        
                                                                                                                                        
 def start_g7(ssh):                                                                                                                     
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".g7:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g7"
   stdin,stdout,stderr =  ssh.exec_command(cmd);                                                                                        
 def start_g8(ssh):                                                                                                                     
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".g8:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=g8"
   stdin,stdout,stderr =  ssh.exec_command(cmd); 
 def start_r5(ssh):
   success_flag = False;
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".r5:x --farm-recheck 200 &"
+  cmd="python ~/xiaodong/start.py --m=r5"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 def kill_r4():
   cmd="sudo kill -9 $(ps -ef | grep ethminer | grep -v grep | awk '{print $2}')"
