@@ -5,7 +5,6 @@ import sys
 import subprocess
 import signal
 import time
-import paramiko
 import re
 address="0xc37616cd242df4c12557a4797edd8042bc4e16ea"
 FNULL = open(os.devnull, 'w')
