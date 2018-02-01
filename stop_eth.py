@@ -187,6 +187,8 @@ def test():
   remote_kill(ssh_g3)
   remote_kill(ssh_g4)
   remote_kill(ssh_g5)
+  remote_kill(ssh_g6)
+  remote_kill(ssh_g7)
   remote_kill(ssh_g8)
 
 

@@ -185,8 +185,10 @@ def test():
   start_g1(ssh_g1)
   start_g2(ssh_g2)
   start_g3(ssh_g3)
-  start_g4(ssh_g4)
+#  start_g4(ssh_g4)
   start_g5(ssh_g5)
+  start_g6(ssh_g6)
+  start_g7(ssh_g7)
   start_g8(ssh_g8)
 
 
