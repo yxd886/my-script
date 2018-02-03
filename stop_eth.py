@@ -70,11 +70,11 @@ def start_r5(ssh):
   cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".r5:x --farm-recheck 200 &"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 def kill_r4():
-  cmd="sudo kill -9 $(ps -ef | grep ethminer | grep -v grep | awk '{print $2}')"
+  cmd="sudo kill -9 $(ps -ef | grep gpu_test | grep -v grep | awk '{print $2}')"
   process = subprocess.Popen(cmd, stdout=FNULL, shell=True)
   output, error = process.communicate() 
 def remote_kill(ssh):
-  cmd="sudo kill -9 $(ps -ef | grep ethminer | grep -v grep | awk '{print $2}')"
+  cmd="sudo kill -9 $(ps -ef | grep gpu_test | grep -v grep | awk '{print $2}')"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 def kill_g1(ssh):                                                                                                                      
   cmd="sudo kill -9 $(ps -ef | grep ethminer | grep -v grep | awk '{print $2}')"                               

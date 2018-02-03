@@ -32,13 +32,19 @@ def parse_arguments():
   return options,args
 
 def start_g3(ssh):
-  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p g4 --currency monero &"
+  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p g3 --currency monero &"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 def start_g4(ssh):
   cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p g4 --currency monero &"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 def start_g5(ssh):
   cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p g5 --currency monero &"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
+def start_g6(ssh):
+  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p g6 --currency monero &"
+  stdin,stdout,stderr =  ssh.exec_command(cmd);
+def start_g7(ssh):
+  cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p g7 --currency monero &"
   stdin,stdout,stderr =  ssh.exec_command(cmd);
 def start_g8(ssh):
   cmd="nohup ~/xiaodong/xmr-stak/build/bin/xmr-stak -o stratum+tcp://fr04.supportxmr.com:7777 -u "+address+" -p g8 --currency monero &"
@@ -68,14 +74,27 @@ def test():
   ssh_g5.connect('202.45.128.225',username='net',password='netexplo') 
   ssh_g5.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
 
+  ssh_g6 = paramiko.SSHClient()
+  ssh_g6.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g6.connect('202.45.128.226',username='net',password='netexplo')
+  ssh_g6.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
+  ssh_g7 = paramiko.SSHClient()
+  ssh_g7.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh_g7.connect('202.45.128.227',username='net',password='netexplo')
+  ssh_g7.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
+
+
   ssh_g8 = paramiko.SSHClient()
   ssh_g8.set_missing_host_key_policy(paramiko.AutoAddPolicy())
   ssh_g8.connect('202.45.128.228',username='net',password='netexplo')
   ssh_g8.exec_command('cd ~/xiaodong/xmr-stak/build/bin')
  
   start_g3(ssh_g3)
-  start_g4(ssh_g4)                                      
+  start_g4(ssh_g4)
   start_g5(ssh_g5)
+  start_g6(ssh_g6)
+  start_g7(ssh_g7)
   start_g8(ssh_g8)
 
 def main():

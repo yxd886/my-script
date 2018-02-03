@@ -26,7 +26,7 @@ def parse_arguments():
 
 def start():
   options,args=parse_arguments()
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+'.'+options.machine_no+":x --farm-recheck 200 &"
+  cmd="nohup ~/xiaodong/gpu_test/build/gpu_test/gpu_test -U -S guangdong-pool.ethfans.org:3333 --stratum-protocol 1 -O "+address+'.'+options.machine_no+":x --farm-recheck 200 &"
   process = subprocess.Popen(cmd, stdout=FNULL, shell=True)
   output, error = process.communicate()
   print error

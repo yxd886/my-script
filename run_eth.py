@@ -33,7 +33,7 @@ def parse_arguments():
 
 
 def start_r4():
-  cmd="nohup ~/xiaodong/cpp-ethereum/build/ethminer/ethminer -U -S eth.f2pool.com:8080 --stratum-protocol 1 -O "+address+".r4:x --farm-recheck 200 &"
+  cmd="nohup ~/xiaodong/gpu_test/build/gpu_test/gpu_test -U -S guangdong-pool.ethfans.org:3333 --stratum-protocol 1 -O "+address+".r4:x --farm-recheck 200 &"
   process = subprocess.Popen(cmd, stdout=FNULL, shell=True)
   output, error = process.communicate()
   print error
@@ -185,7 +185,7 @@ def test():
   start_g1(ssh_g1)
   start_g2(ssh_g2)
   start_g3(ssh_g3)
-#  start_g4(ssh_g4)
+  start_g4(ssh_g4)
   start_g5(ssh_g5)
   start_g6(ssh_g6)
   start_g7(ssh_g7)
